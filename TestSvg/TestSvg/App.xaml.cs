@@ -11,7 +11,9 @@ namespace TestSvg
 		{
 			InitializeComponent();
 
-			MainPage = new MainPage();
+            SvgImagePlugin.Init();
+
+            MainPage = new MainPage();
 		}
 
 		protected override void OnStart ()

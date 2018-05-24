@@ -2,37 +2,35 @@
 using SkiaSharp.Views.Forms;
 using System;
 using System.IO;
+using System.Reflection;
 using Xamarin.Forms;
-using SKSvg = SkiaSharp.Extended.Svg.SKSvg;
 
 namespace SvgImageHandler
 {
     public class SvgImage : Frame
     {
-        #region Private Members
-
         private readonly SKCanvasView _canvasView = new SKCanvasView();
 
-        #endregion
+        /// <summary>
+        /// The path to the svg file
+        /// </summary>
+        public static readonly BindableProperty SvgPathProperty =
+          BindableProperty.Create(nameof(SvgPath), typeof(string), typeof(SvgImage), default(string), propertyChanged: RedrawCanvas);
 
-        #region Bindable Properties
-
-        #region ResourceId
-
-        public static readonly BindableProperty ResourceIdProperty = BindableProperty.Create(
-            nameof(ResourceId), typeof(string), typeof(SvgImage), default(string), propertyChanged: RedrawCanvas);
-
-        public string ResourceId
+        /// <summary>
+        /// The path to the svg file
+        /// </summary>
+        public string SvgPath
         {
-            get => (string)GetValue(ResourceIdProperty);
-            set => SetValue(ResourceIdProperty, value);
+            get { return (string)GetValue(SvgPathProperty); }
+            set { SetValue(SvgPathProperty, value); }
         }
 
-        #endregion
+        /// <summary>
+        /// The assembly containing the svg file
+        /// </summary>
+        public Assembly SvgAssembly => DependencyService.Get<ISvgImagePlugin>().Assembly;
 
-        #endregion
-
-        #region Constructor
 
         public SvgImage()
         {
@@ -42,8 +40,6 @@ namespace SvgImageHandler
             Content = _canvasView;
             _canvasView.PaintSurface += CanvasViewOnPaintSurface;
         }
-
-        #endregion
 
         #region Private Methods
 
@@ -58,10 +54,10 @@ namespace SvgImageHandler
             SKCanvas canvas = args.Surface.Canvas;
             canvas.Clear();
 
-            if (string.IsNullOrEmpty(ResourceId))
+            if (string.IsNullOrEmpty(SvgPath))
                 return;
 
-            using (Stream stream = GetType().Assembly.GetManifestResourceStream(ResourceId))
+            using (Stream stream = SvgAssembly.GetManifestResourceStream(SvgPath))
             {
                 SKSvg svg = new SKSvg();
                 svg.Load(stream);

@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SvgImageHandler", "SvgImageHandler\SvgImageHandler.csproj", "{9DA25F68-4F9A-44FF-B1E9-698B3DB280D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SvgImageHandler", "SvgImageHandler\SvgImageHandler.csproj", "{9DA25F68-4F9A-44FF-B1E9-698B3DB280D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSvg.Android", "TestSvg\TestSvg.Android\TestSvg.Android.csproj", "{A624DD01-8E7A-45EE-A810-6B87FFD65DC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSvg", "TestSvg\TestSvg\TestSvg.csproj", "{92479F69-F241-4AF4-AD9E-F536D843DBE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSvg", "TestSvg\TestSvg\TestSvg.csproj", "{92479F69-F241-4AF4-AD9E-F536D843DBE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

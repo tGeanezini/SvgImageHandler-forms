@@ -29,6 +29,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <AndroidSupportedAbis />
+    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -93,6 +95,10 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\SvgImageHandler\SvgImageHandler.csproj">
+      <Project>{9da25f68-4f9a-44ff-b1e9-698b3db280d3}</Project>
+      <Name>SvgImageHandler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TestSvg\TestSvg.csproj">
       <Project>{36DBD973-1356-4B8A-8352-FEF5D7D1F08C}</Project>
       <Name>TestSvg</Name>
